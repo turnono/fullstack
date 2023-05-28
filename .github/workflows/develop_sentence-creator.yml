@@ -50,6 +50,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'sentence-creator'
-          package: ./dist/apps/server
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_113C1CDD0BCE4E1EBE74184BA1E8F6A7 }}
+          package: .
 
