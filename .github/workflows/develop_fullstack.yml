@@ -32,6 +32,7 @@ jobs:
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
           npm install
           npx nx build server
+          working-directory: ./dist/apps/server
           popd
 
       - name: 'Run Azure Functions Action'
@@ -39,7 +40,6 @@ jobs:
         id: fa
         with:
           app-name: 'fullstack'
-          slot-name: 'Production'
-          package: ./dist/apps/server
+          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DC8F932CEAF34C08A4DEE4F315C85633 }}
     
