@@ -36,8 +36,7 @@ jobs:
           
           
       - name: 'Run Node.js App'
-        working-directory: ./dist/apps/server
-        run: node main.js
+        run: cd dist/apps/server && node main.js
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
