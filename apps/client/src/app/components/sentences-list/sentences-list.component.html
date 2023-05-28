@@ -1,0 +1,8 @@
+<!-- src/app/sentences-list/sentences-list.component.html -->
+
+<div class="sentence-container">
+  <h2>Previously Submitted Sentences:</h2>
+  <p *ngFor="let sentence of sentences | async; index as i">
+    {{ i + 1 + ') ' + sentence.text }}
+  </p>
+</div>
