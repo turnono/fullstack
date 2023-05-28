@@ -32,6 +32,7 @@ jobs:
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
           npm install
           npx nx build server
+          run: cd dist/apps/server && node main.js
           popd
 
       - name: 'Run Azure Functions Action'
@@ -42,5 +43,4 @@ jobs:
           package: ./dist/apps/server
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DC8F932CEAF34C08A4DEE4F315C85633 }}
 
-      - name: 'Run Node.js App'
-        run: node main.js
+      
