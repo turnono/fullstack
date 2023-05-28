@@ -23,7 +23,7 @@ jobs:
         run: |
           pushd '.'
           npm install
-          npx nx build server
+          npx nx build client
           popd
 
   close_pull_request_job:
