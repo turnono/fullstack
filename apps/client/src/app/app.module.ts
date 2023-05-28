@@ -7,14 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { PipesModule } from './pipes/pipes.module';
-import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,13 +19,6 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatButtonModule,
-    BrowserAnimationsModule,
-    MatProgressSpinnerModule,
-    PipesModule,
     MatSnackBarModule,
   ],
   providers: [],

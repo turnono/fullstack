@@ -1,8 +1,20 @@
-<!-- src/app/sentences-list/sentences-list.component.html -->
-
-<div class="sentence-container">
+<div class="sentence-list-container">
   <h2>Previously Submitted Sentences:</h2>
-  <p *ngFor="let sentence of sentences | async; index as i">
-    {{ i + 1 + ') ' + sentence.text }}
-  </p>
+  <div *ngIf="sentences && sentences.length > 0; else noData">
+    <p *ngFor="let sentence of sentences; index as i">
+      {{ i + 1 + ') ' + (sentence.text | sentence) }}
+      <button
+        mat-icon-button
+        aria-label="Remove"
+        class="remove-button"
+        (click)="removeSentence(sentence?.['_id'])"
+      >
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </p>
+  </div>
+
+  <ng-template #noData>
+    <p>No sentences submitted as yet!</p>
+  </ng-template>
 </div>

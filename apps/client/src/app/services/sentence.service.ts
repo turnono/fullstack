@@ -1,4 +1,3 @@
-// src/app/sentence.ts.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, of, tap } from 'rxjs';
@@ -27,5 +26,9 @@ export class SentenceService {
     return this.http
       .get(`${this.apiUrl}/sentences/get/`)
       .pipe(map(({ sentences }: any) => sentences));
+  }
+
+  removeSentence(id: string) {
+    return this.http.delete(`${this.apiUrl}/sentences/delete/${id}`);
   }
 }

@@ -1,3 +1,14 @@
-.sentence-container {
-  margin: 25px;
+.sentence-list-container {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.remove-button {
+  padding: 0;
+  color: red;
+  height: 30px;
+  width: 20px;
 }

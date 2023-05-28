@@ -5,8 +5,6 @@ export interface IWord extends Document {
   word: string;
 }
 
-export interface IWordModel extends IWord, Document {}
-
 const WordSchema: Schema = new Schema(
   {
     type: { type: String, required: true },

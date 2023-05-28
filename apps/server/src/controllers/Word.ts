@@ -26,17 +26,6 @@ const createWord = async (req: Request, res: Response, next: NextFunction) => {
     );
 };
 
-const updateWord = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {};
-const deleteWord = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {};
-const readWord = async (req: Request, res: Response, next: NextFunction) => {};
 const readAllWords = async (req: Request, res: Response, next: NextFunction) =>
   Word.find()
     .then((words) =>
@@ -52,8 +41,5 @@ const readAllWords = async (req: Request, res: Response, next: NextFunction) =>
 
 export default {
   createWord,
-  updateWord,
-  deleteWord,
-  readWord,
   readAllWords,
 };

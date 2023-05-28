@@ -1,26 +1,40 @@
-<div class="container" *ngIf="wordsGroups$ | async as wordsGroups">
-  <form>
-    <div class="dropdown-container">
-      <div *ngFor="let wordsGroup of wordsGroups">
-        <mat-form-field>
-          <mat-label>{{ wordsGroup.label | uppercase }}</mat-label>
-          <mat-select (selectionChange)="onSelect($event)">
-            <mat-option *ngFor="let word of wordsGroup.words" [value]="word">{{
-              word
-            }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+<div class="container">
+  <div class="app-title">
+    <h1>WordMix: Dynamic Sentence Builder</h1>
+    <p>
+      Create sentences with precision and creativity. Click on the dropdowns to
+      select your words.
+    </p>
+  </div>
+
+  <div
+    class="dropdown-container"
+    *ngIf="wordsGroups$ | async as wordsGroups; else loading"
+  >
+    <div class="dropdown" *ngFor="let wordsGroup of wordsGroups">
+      <mat-form-field>
+        <mat-label>{{ wordsGroup.label | uppercase }}</mat-label>
+        <mat-select (selectionChange)="onSelect($event)">
+          <mat-option *ngFor="let word of wordsGroup.words" [value]="word">{{
+            word
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-  </form>
+  </div>
+
+  <ng-template #loading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
 
   <div class="sentence-container">
     <mat-form-field>
       <mat-label>Sentence:</mat-label>
       <textarea matInput rows="5" [(ngModel)]="sentence"></textarea>
     </mat-form-field>
+
     <button
-      mat-button
+      mat-raised-button
       color="primary"
       [disabled]="sentence.length === 0"
       (click)="onSubmit()"
@@ -28,17 +42,4 @@
       Submit
     </button>
   </div>
-</div>
-
-<div class="sentence-list-container">
-  <h2>Previously Submitted Sentences:</h2>
-  <div *ngIf="sentences && sentences.length > 0; else noData">
-    <p *ngFor="let sentence of sentences; index as i">
-      {{ i + 1 + ') ' + sentence.text }}
-    </p>
-  </div>
-
-  <ng-template #noData>
-    <p>No sentences submitted as yet!</p>
-  </ng-template>
 </div>

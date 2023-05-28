@@ -73,11 +73,3 @@ const startServer = () => {
     Logging.info(`Server listening on port ${config.server.port}`);
   });
 };
-
-// router.get('/', (req, res) => {
-//   res.send({ message: 'Hello API' });
-// });
-//
-// router.listen(port, host, () => {
-//   console.log(`[ ready ] http://${host}:${port}`);
-// });

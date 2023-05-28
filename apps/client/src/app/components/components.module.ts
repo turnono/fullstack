@@ -9,6 +9,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PipesModule } from '../pipes/pipes.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -21,6 +25,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatButtonModule,
     BrowserAnimationsModule,
+    PipesModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
   ],
   declarations: [SentenceBuilderComponent, SentencesListComponent],
   exports: [SentenceBuilderComponent, SentencesListComponent],

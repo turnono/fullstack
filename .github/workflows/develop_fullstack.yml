@@ -42,4 +42,4 @@ jobs:
           package: ./dist/apps/server
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DC8F932CEAF34C08A4DEE4F315C85633 }}
 
-      
+

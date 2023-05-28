@@ -1,19 +1,18 @@
 // src/app/sentences-list/sentences-list.component.ts
-import { Component, OnInit } from '@angular/core';
-import { SentenceService } from '../../services/sentence.service';
-import { map, Observable } from 'rxjs';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sentences-list',
   templateUrl: './sentences-list.component.html',
   styleUrls: ['./sentences-list.component.scss'],
 })
-export class SentencesListComponent implements OnInit {
-  sentences!: Observable<any[]>;
+export class SentencesListComponent {
+  @Input() sentences: any[] = [];
+  @Output() remove = new EventEmitter();
 
-  constructor(private sentenceService: SentenceService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.sentences = this.sentenceService.getSentences();
+  removeSentence(_id: string) {
+    this.remove.emit(_id);
   }
 }

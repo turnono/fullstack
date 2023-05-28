@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { map, Observable, take } from 'rxjs';
-import { FormBuilder } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { firstValueFrom, map, Observable, take } from 'rxjs';
 import { SentenceService } from './services/sentence.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -9,20 +8,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  sentence: string = '';
+export class AppComponent {
   sentences: any[] = [];
   wordsGroups$!: Observable<{ label: string; words: string[] }[]>;
 
   constructor(
-    private fb: FormBuilder,
     private sentenceService: SentenceService,
     private _snackBar: MatSnackBar
-  ) {}
-
-  ngOnInit(): void {
-    // each word is an object with a word and a type. We need to group them all by type
-    // this.sentenceService.getWords().subscribe();
+  ) {
     this.wordsGroups$ = this.sentenceService.getWords().pipe(
       map((words) => {
         const groups: any = {};
@@ -39,7 +32,6 @@ export class AppComponent implements OnInit {
         }));
       })
     );
-
     this.getSentences();
   }
 
@@ -52,27 +44,21 @@ export class AppComponent implements OnInit {
       });
   }
 
-  onSelect(option: any): void {
-    console.log({ option });
-    if (option?.value) {
-      this.sentence += `${option.value} `;
-      option.source.value = null;
-    }
+  submitSentence(e: string) {
+    return firstValueFrom(this.sentenceService.addSentence(e)).then((x) => {
+      this.getSentences();
+      this._snackBar.open('Sentence added', 'Close', {
+        duration: 2000,
+      });
+    });
   }
 
-  onSubmit(): void {
-    // Handle the submit logic here
-    console.log(this.sentence);
-    this.sentenceService
-      .addSentence(this.sentence)
-      .pipe(take(1))
-      .subscribe((x) => {
-        console.log({ x });
-        this.getSentences();
-        this.sentence = '';
-        this._snackBar.open('Sentence added', 'Close', {
-          duration: 2000,
-        });
+  removeSentence(e: string) {
+    return firstValueFrom(this.sentenceService.removeSentence(e)).then((x) => {
+      this.getSentences();
+      this._snackBar.open('Sentence removed', 'Close', {
+        duration: 2000,
       });
+    });
   }
 }
