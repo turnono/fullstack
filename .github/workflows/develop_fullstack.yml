@@ -32,7 +32,6 @@ jobs:
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
           npm install
           npx nx build server
-          run: cd dist/apps/server && node main.js
           popd
 
       - name: 'Run Azure Functions Action'
