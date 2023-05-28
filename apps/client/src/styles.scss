@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+  margin: 0;
+}
+
+button {
+  width: 200px;
+}
+
+@media only screen and (max-width: 600px) {
+  label {
+    font-size: 12px !important;
+  }
+
+  .app-title {
+    font-size: 0.8rem;
+  }
+
+  .dropdown {
+    max-width: 45%;
+    max-height: 65px;
+  }
+}
