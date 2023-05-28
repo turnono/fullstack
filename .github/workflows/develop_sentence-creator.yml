@@ -47,6 +47,6 @@ jobs:
         with:
           app-name: 'sentence-creator'
           slot-name: 'Production'
-          package: ./dist/apps/client
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_113C1CDD0BCE4E1EBE74184BA1E8F6A7 }}
+          package: .
 
