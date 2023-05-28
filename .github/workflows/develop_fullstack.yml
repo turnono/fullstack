@@ -33,7 +33,6 @@ jobs:
           npm install
           npx nx build server
           working-directory: ./dist/apps/server
-          popd
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
