@@ -24,8 +24,7 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build --if-present
-          npm run test --if-present
+          npx nx build client
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -41,10 +40,6 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
-        with:
-          name: node-app
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -52,5 +47,6 @@ jobs:
         with:
           app-name: 'sentence-creator'
           slot-name: 'Production'
+          package: ./dist/apps/client
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_113C1CDD0BCE4E1EBE74184BA1E8F6A7 }}
-          package: .
+
